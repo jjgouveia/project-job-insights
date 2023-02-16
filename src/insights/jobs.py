@@ -18,10 +18,9 @@ def read(path: str) -> List[Dict]:
     list
         List of rows as dicts
     """
-    with open(path, mode="r", encoding="utf-8") as file:
+    with open(path, encoding="utf-8") as file:
         jobs_reader = csv.DictReader(file, delimiter=",", quotechar='"')
         jobs_list = []
-
         for job in jobs_reader:
             jobs_list.append(job)
 
@@ -43,7 +42,14 @@ def get_unique_job_types(path: str) -> List[str]:
     list
         List of unique job types
     """
-    raise NotImplementedError
+
+    jobs_list = read(path)
+    jobs = []
+    for job in jobs_list:
+        name = job["job_type"]
+        if name not in jobs:
+            jobs.append(name)
+    return jobs
 
 
 def filter_by_job_type(jobs: List[Dict], job_type: str) -> List[Dict]:
