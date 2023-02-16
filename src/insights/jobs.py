@@ -20,7 +20,6 @@ def read(path: str) -> List[Dict]:
     """
     with open(path, mode="r", encoding="utf-8") as file:
         jobs_reader = csv.DictReader(file, delimiter=",", quotechar='"')
-        
         jobs_list = []
 
         for job in jobs_reader:
