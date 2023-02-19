@@ -26,6 +26,8 @@ def read(path: str) -> List[Dict]:
 
     return jobs_list
 
+# print(read("data/jobs.csv")[6])
+
 
 def get_unique_job_types(path: str) -> List[str]:
     """Checks all different job types and returns a list of them
